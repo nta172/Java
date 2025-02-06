@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Exsercise4_15 {
+public class Exercise4_15 {
     public static void main(String[] args) {
         /*
          * Question 15 (Optional): Revert string by word

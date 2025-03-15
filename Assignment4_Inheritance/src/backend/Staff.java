@@ -7,7 +7,7 @@ public class Staff {
 	private String address;
 	
 	public enum Gender {
-		MALE, FEMALE, UNKONW;
+		MALE, FEMALE, UNKNOWN;
 	}
 	
 	public Staff(String name, int age, Gender gender, String address) {
@@ -20,6 +20,8 @@ public class Staff {
 	public String getName() {
 		return name;
 	}
+	
+	
 	
 	@Override
 	public String toString() {

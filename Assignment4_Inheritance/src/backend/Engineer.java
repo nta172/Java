@@ -10,6 +10,6 @@ public class Engineer extends Staff {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Position: Engineer [specialized = " + specialized + "]";
+		return super.toString() + " Position: Engineer [specialized = " + specialized + "]";
 	}
 }

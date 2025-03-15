@@ -1,0 +1,203 @@
+package backend;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import backend.Staff.Gender;
+
+public class QuanLyCanBo {
+	private ArrayList<Staff> staffList;
+	private Scanner sc;
+	
+	public QuanLyCanBo() {
+		staffList = new ArrayList<Staff>();
+		sc = new Scanner(System.in);
+	}
+
+	public void question1() {
+
+	}
+
+	public void question2() {
+		menu();
+	}
+
+	public void menu() {
+		// ArrayList<Staff> staffList = null;
+		while (true) {
+			System.out.println("============================================");
+			System.out.println("Lựa chọn chức năng bạn muốn sử dụng");
+			System.out.println("1. Thêm mới cán bộ.");
+			System.out.println("2. Tìm kiếm theo họ tên.");
+			System.out.println("3. Hiển thị thông tin về danh sách cán bộ.");
+			System.out.println("4. Nhập tên của cán bộ và xóa cán bộ đó.");
+			System.out.println("5. Thoát khỏi chương trình.");
+			System.out.println("============================================");
+
+			int menuChoose = sc.nextInt();
+			switch (menuChoose) {
+			case 1:
+				addStaff();
+				break;
+			case 2:
+				findByName();
+				break;
+			case 3:
+				printListStaff();
+				break;
+			case 4:
+				deleteByName();
+				break;
+			case 5:
+				return;
+			default:
+				System.out.println("Vui lòng nhập lại đúng số trên menu.");
+				break;
+			}
+		}
+	}
+
+	// addStaff
+	public void addStaff() {
+		System.out.println("Chọn loại cán bộ.");
+		System.out.println("1. Thêm Engineer.");
+		System.out.println("2. Thêm Worker.");
+		System.out.println("3. Thêm Employee.");
+		System.out.println("---------------------------");
+		
+		int choose1 = sc.nextInt();
+		sc.nextLine();
+		switch (choose1) {
+		// Add Engineer.
+		case 1:
+			System.out.println("Nhập tên của Engineer : ");
+			String nameEngineer = sc.nextLine();
+			System.out.println("Nhập tuổi của Engineer : ");
+			int ageEngineer = sc.nextInt();
+			sc.nextLine();
+			System.out.println("Nhập giới tính của Engineer : 1.Male, 2.Female, 3.Unknown");
+			int flagEngineer = sc.nextInt();
+			sc.nextLine();
+			Gender genderName1 = null;
+			switch (flagEngineer) {
+			case 1:
+				genderName1 = Gender.MALE;
+				break;
+			case 2:
+				genderName1 = Gender.FEMALE;
+				break;
+			case 3:
+				genderName1 = Gender.UNKNOWN;
+				break;
+			default:
+				System.out.println("Lựa chọn không hợp lệ.");
+				genderName1 = Gender.UNKNOWN;
+				break;
+			}
+			System.out.println("Nhập địa chỉ của Engineer : ");
+			String addressEngineer = sc.nextLine();
+			System.out.println("Nhập chuyên ngành của Engineer : ");
+			String specializeEngineer = sc.nextLine();
+			Staff engineer = new Engineer(nameEngineer, ageEngineer, genderName1, addressEngineer, specializeEngineer);
+			staffList.add(engineer);
+			System.out.println("Đã thêm engineer thành công.");
+			break;
+			// Add Worker.
+		case 2:
+			System.out.println("Nhập vào tên của Worker : ");
+			String nameWorker = sc.nextLine();
+			System.out.println("Nhập vào tuổi của Worker : ");
+			int ageWorker = sc.nextInt();
+			sc.nextLine();
+			System.out.println("Nhập vào giới tính của Worker : 1.Male, 2.Female, 3.Unknown");
+			int flagWorker = sc.nextInt();
+			sc.nextLine();
+			Gender genderName2 = null;
+			switch (flagWorker) {
+			case 1:
+				genderName2 = Gender.MALE;
+				break;
+			case 2: 
+				genderName2 = Gender.FEMALE;
+				break;
+			case 3:
+				genderName2 = Gender.UNKNOWN;
+				break;
+			default:
+				System.out.println("Lựa chọn không hợp lệ.");
+				genderName2 = Gender.UNKNOWN;
+				break;
+			}
+			System.out.println("Nhập địa chỉ của Worker : ");
+			String addressWorker = sc.nextLine();
+			System.out.println("Nhập cấp bậc của Worker : ");
+			int rankWorker = sc.nextInt();
+			Staff worker = new Worker(nameWorker, ageWorker, genderName2, addressWorker, rankWorker);
+			staffList.add(worker);
+			System.out.println("Đã thêm worker thành công.");
+			break;
+			// Add Employee.
+		case 3:
+			System.out.println("Nhập vào tên của Employee : ");
+			String nameEmployee = sc.nextLine();
+			System.out.println("Nhập tuổi của Employee : ");
+			int ageEmployee = sc.nextInt();
+			sc.nextLine();
+			System.out.println("Nhập giới tính của Employee : 1. Male, 2.Female, 3.Unknown");
+			int flagEmployee = sc.nextInt();
+			sc.nextLine();
+			Gender genderName3 = null;
+			switch (flagEmployee) {
+			case 1:
+				genderName3 = Gender.MALE;
+				break;
+			case 2:
+				genderName3 = Gender.FEMALE;
+				break;
+			case 3:
+				genderName3 = Gender.UNKNOWN;
+				break;
+			default:
+				System.out.println("Lựa chọn không hợp lệ.");
+				genderName3 = Gender.UNKNOWN;
+				break;
+			}
+			System.out.println("Nhập địa chỉ của Employee : ");
+			String addressEmployee = sc.nextLine();
+			System.out.println("Nhập công việc của Employee : ");
+			String taskEmployee = sc.nextLine();
+			Staff employee = new Employee(nameEmployee, ageEmployee, genderName3, addressEmployee, taskEmployee);
+			staffList.add(employee);
+			System.out.println("Đã thêm employee thành công.");
+			break;
+		default:
+			System.out.println("Vui lòng lựa chọn lại.");
+			break;
+		}
+	}
+
+	// findByName
+	public void findByName() {
+		System.out.println("Nhập vào tên bạn muốn tìm kiếm :");
+		String findName = sc.nextLine();
+		for (Staff staff : staffList) {
+			if (staff.getName().equalsIgnoreCase(findName)) {
+				System.out.println(staff);
+			}
+		}
+	}
+
+	// printListStaff
+	public void printListStaff() {
+		for(Staff staff : staffList) {
+			System.out.println(staff);
+		}
+	}
+
+	// deleteByName
+	public void deleteByName() {
+		System.out.println("Nhập tên cần xóa thông tin : ");
+		String delName = sc.nextLine();
+		staffList.removeIf(staff -> staff.getName().equalsIgnoreCase(delName));
+	}
+}

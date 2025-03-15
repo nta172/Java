@@ -10,7 +10,7 @@ public class Employee extends Staff {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Position: Employee [task = " + task + "]";
+		return super.toString() + " Position: Employee [task = " + task + "]";
 	}
 	
 }

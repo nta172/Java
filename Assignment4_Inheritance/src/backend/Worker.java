@@ -10,6 +10,6 @@ public class Worker extends Staff {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Position: Worker [rank = " + rank + "]";
+		return super.toString() + " Position: Worker [rank = " + rank + "]";
 	}
 }

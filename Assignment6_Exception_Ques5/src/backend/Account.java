@@ -7,17 +7,10 @@ public class Account {
 	private String userName;
 	private String fullName;
 	private int age;
-
-	@Override
-	public String toString() {
-		return "Account [id=" + id + ", email=" + email + ", userName=" + userName + ", fullName=" + fullName + ", age = " + age + "]";
-	}
 	
 	public Account() throws InvalidAgeInputingException {
-		super();
-		System.out.println("Nhập thông tin Account.");
+		System.out.println("Nhập thông tin Account : ");
 		COUNT++;
-		this.id = COUNT;
 		System.out.println("Nhập email : ");
 		this.email = ScannerUtils.inputString();
 		System.out.println("Nhập userName : ");
@@ -26,24 +19,30 @@ public class Account {
 		this.fullName = ScannerUtils.inputString();
 		this.age = inputAccountAge();
 	}
-
+	
 	private int inputAccountAge() throws InvalidAgeInputingException {
-		System.out.println("Nhập Age : ");
-		while(true) {
+		System.out.println("Nhập age : ");
+		while (true) {
+			int intAge = ScannerUtils.inputInt();
 			try {
-				int ageInput = ScannerUtils.inputInt();
-				if(ageInput <= 0) {
-					throw new InvalidAgeInputingException("The age must be grater than 0, please input again.");
+				if (intAge <= 0) {
+					throw new InvalidAgeInputingException("The age must be greater than 0");
 				} else {
-					if (ageInput < 18) {
-						System.err.println("Your age must be greater than 18, input again : ");;
+					if (intAge < 18) {
+						System.err.println("Your age must be greater than 18");
 					} else {
-						return ageInput;
+						return intAge;
 					}
 				}
+				
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}
 		}
+	}
+
+	@Override
+	public String toString(){
+		return "Account [id = " + id + ", email = " + email + ", userName = " + userName + ", fullName = " + fullName + ", age = " + age + "]";
 	}
 }

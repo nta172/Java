@@ -5,19 +5,19 @@ public class Department {
 	private int id;
 	private String name;
 	
+	public Department() {
+		super();
+		COUNT++;
+		this.id = COUNT;
+		System.out.println("Nhập tên Department : ");
+		this.name = ScannerUtils.inputString();
+	}
+	
 	public Department(String name) {
 		super();
 		COUNT++;
 		this.id = COUNT;
 		this.name = name;
-	}
-	
-	public Department() {
-		super();
-		COUNT++;
-		this.id = COUNT;
-		System.out.println("Nhập tên phòng : ");
-		this.name = ScannerUtils.inputString();
 	}
 	
 	@Override

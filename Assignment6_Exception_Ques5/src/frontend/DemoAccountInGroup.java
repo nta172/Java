@@ -5,8 +5,8 @@ import backend.InvalidAgeInputingException;
 
 public class DemoAccountInGroup {
 	public static void main(String[] args) throws InvalidAgeInputingException {
-		System.out.println("Tạo group : ");
+		System.out.println("Tạo Group : ");
 		Group gp = new Group();
-		gp.printInforGroup();
+		gp.printInfoGroup();
 	}
 }

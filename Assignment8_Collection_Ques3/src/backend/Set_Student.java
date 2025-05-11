@@ -29,12 +29,7 @@ public class Set_Student {
 		setStudent.add(st3);
 
 		System.out.println("Tạo thành công " + setStudent.size() + " sinh viên.");
-		/*
-		 * Iterator<Student> iteratorSet = setStudent.iterator();
-		 * 
-		 * for (int i = 0; i < setStudent.size(); i++) {
-		 * System.out.println(iteratorSet.next()); }
-		 */
+		printStudent();
 	}
 
 	public void menuSetStudent() {
@@ -44,12 +39,10 @@ public class Set_Student {
 		System.out.println("3. Lấy ra phần tử đầu và phần tử cuối của students.");
 		System.out.println("4. Tạo 1 method tìm kiếm student theo id.");
 		System.out.println("5. Tạo 1 method tìm kiếm student theo name.");
-		System.out.println("6. Tạo 1 method để in ra các student có trùng tên.");
-		System.out.println("7. Xóa name của student có id.");
-		System.out.println("8. Delete student có id.");
-		System.out.println("9. Tạo 1 SetList tên là studentCopies và add tất cả students vào studentCopies");
-		System.out.println("10. In ra danh sách sinh viên.");
-		System.out.println("11. Thoát chương trình.");
+		System.out.println("6. Xóa name của student có id.");
+		System.out.println("7. Delete student có id.");
+		System.out.println("8. Tạo 1 SetList tên là studentCopies và add tất cả students vào studentCopies");
+		System.out.println("9. Thoát chương trình.");
 	}
 
 	public void setStudent() {
@@ -63,7 +56,7 @@ public class Set_Student {
 				break;
 			case 2:
 				Iterator<Student> iteratorStudent2 = setStudent.iterator();
-				for(int i = 0; i <= 2; i++) {
+				for (int i = 0; i <= 2; i++) {
 					iteratorStudent2.next();
 				}
 				System.out.println("Phần tử thứ 4 của students : " + iteratorStudent2.next());
@@ -72,7 +65,7 @@ public class Set_Student {
 			case 3:
 				Iterator<Student> iteratorStudent3 = setStudent.iterator();
 				System.out.println("Phần tử đầu của students : " + iteratorStudent3.next());
-				for(int i = 0; i < setStudent.size() - 2; i++) {
+				for (int i = 0; i < setStudent.size() - 2; i++) {
 					iteratorStudent3.next();
 				}
 				System.out.println("Phần tử cuối của students : " + iteratorStudent3.next());
@@ -82,7 +75,7 @@ public class Set_Student {
 				System.out.println("Nhập id mà bạn muốn tìm kiếm : ");
 				int id4 = ScannerUtils.inputInt();
 				Iterator<Student> iteratorStudent4 = setStudent.iterator();
-				for(int i = 0; i < setStudent.size(); i++) {
+				for (int i = 0; i < setStudent.size(); i++) {
 					Student stFind4 = iteratorStudent4.next();
 					if (stFind4.getId() == id4) {
 						System.out.println(stFind4);
@@ -95,7 +88,7 @@ public class Set_Student {
 				System.out.println("Nhập name mà bạn muốn tìm kiếm : ");
 				String name5 = ScannerUtils.inputString();
 				Iterator<Student> iteratorStudent5 = setStudent.iterator();
-				for(int i = 0; i < setStudent.size(); i++) {
+				for (int i = 0; i < setStudent.size(); i++) {
 					Student stFind5 = iteratorStudent5.next();
 					if (stFind5.getName().equals(name5)) {
 						System.out.println(stFind5);
@@ -103,13 +96,31 @@ public class Set_Student {
 				}
 				break;
 			case 6:
+				System.out.println("Nhập id mà bạn muốn xóa name của students : ");
+				int id6 = ScannerUtils.inputInt();
 				Iterator<Student> iteratorStudent6 = setStudent.iterator();
 				for (int i = 0; i < setStudent.size(); i++) {
-					for (int j = i + 1; j < setStudent.size(); j++) {
-						
+					Student stFind6 = iteratorStudent6.next();
+					if (stFind6.getId() == id6) {
+						stFind6.setName(null);
 					}
 				}
+				printStudent();
 				break;
+			case 7:
+				System.out.println("Nhập vào id mà bạn muốn xóa students : ");
+				int id7 = ScannerUtils.inputInt();
+				setStudent.removeIf(student -> student.getId() == id7);
+				printStudent();
+				break;
+			case 8:
+				System.out.println("Danh sách copy từ danh sách setStudent : ");
+				Set<Student> copySetStudent = new HashSet<Student>();
+				copySetStudent.addAll(setStudent);
+				printStudent();
+				break;
+			case 9:
+				return;
 			default:
 				System.out.println("Nhập đúng số trên menu.");
 				break;
@@ -118,8 +129,9 @@ public class Set_Student {
 	}
 
 	public void printStudent() {
-		for (Student student : setStudent) {
-			System.out.println(student);
+		Iterator<Student> i1 = setStudent.iterator();
+		for(int i = 0; i < setStudent.size(); i++) {
+			System.out.println(i1.next());
 		}
 	}
 }

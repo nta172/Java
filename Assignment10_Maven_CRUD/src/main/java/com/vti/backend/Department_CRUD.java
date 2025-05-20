@@ -18,7 +18,7 @@ public class Department_CRUD {
 		System.out.format("+--------+-----------------------+%n");
 		
 		while (resultSet1.next()) {
-			System.out.format(leftAlignFormat, resultSet1.getInt(1), resultSet1.get(2));
+			System.out.format(leftAlignFormat, resultSet1.getInt(1), resultSet1.getInt(2));
 		}
 	}
 }
